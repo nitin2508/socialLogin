@@ -61,11 +61,12 @@ signIn = async () => {
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
         <GoogleSigninButton
-    style={{ width: 48, height: 48 }}
-    size={GoogleSigninButton.Size.Icon}
-    color={GoogleSigninButton.Color.Dark}
-    onPress={this.signIn}
-   />
+        title="LearnMore"
+        style={{ width:312, height: 48 }}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Light}
+        onPress={this.signIn} 
+      />
       </View>
     );
   }
