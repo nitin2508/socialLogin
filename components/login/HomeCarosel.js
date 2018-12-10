@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {View,Text,StyleSheet,Dimensions,Image} from 'react-native';
-import Carousel ,{Pagination} from 'react-native-snap-carousel';
+import Swiper from 'react-native-swiper';
 import CaroselItem from './CaroselItem';
 
 export default class HomeCarosel extends Component{
@@ -29,56 +29,12 @@ export default class HomeCarosel extends Component{
         activeSlide:0
     }
 
-    get pagination () {
-        const { entries, activeSlide } = this.state;
-        return (
-            <Pagination
-              dotsLength={entries.length}
-              activeDotIndex={activeSlide}
-              containerStyle={{ backgroundColor: 'transparent' }}
-              dotStyle={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: 5,
-                  marginHorizontal: 8,
-                  backgroundColor: 'black'
-              }}give 
-              inactiveDotStyle={{
-                  // Define styles for inactive dots here
-              }}
-              inactiveDotOpacity={0.4}
-              inactiveDotScale={0.6}
-            />
-        );
-    }
-
-
-    _renderItem ({item, index}) {
-        return (
-            <CaroselItem item={item}/>
-            // <View style={{width:Dimensions.get('window').width}} >
-            //     <Image
-            //     style={{width: this.width, height: 200}}
-            //     source={{uri: item.illustration}}
-            //     />
-            // </View>
-        );
-    }
-
     render(){
         return (
             <View style={styles.slide}>
-                <Carousel
-                windowSize={1}
-                data={this.state.entries}
-                renderItem={this._renderItem}
-                itemHeight={350}
-                itemWidth={Dimensions.get('window').width}
-                sliderWidth={Dimensions.get('window').width}
-                itemWidth={this.width}
-                onSnapToItem={(index) => this.setState({ activeSlide: index }) }
-                />
-                { this.pagination }
+                <Swiper style={styles.wrapper} showsButtons={false}>
+                        {this.state.entries.map((item,index)=> <CaroselItem item={item} key={index}/>)}
+                </Swiper>
             </View>
         );
     }
@@ -86,7 +42,7 @@ export default class HomeCarosel extends Component{
 const styles = StyleSheet.create({
     slide: {
         width: Dimensions.get('window').width,
-        height: 350,
+        height: 300,
         paddingHorizontal: 20
         // other styles for the item container
     },
@@ -94,5 +50,10 @@ const styles = StyleSheet.create({
         width: 280,
         flex: 1
         // other styles for the inner container
-    }
+    },
+    slide1: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#9DD6EB',
+      },
 });

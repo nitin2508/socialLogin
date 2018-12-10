@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {View,Text,StyleSheet,Button,AsyncStorage,Image} from 'react-native';
-// import { TextField } from 'react-native-material-textfield';
+//import { TextField } from 'react-native-material-textfield';
 // import HomeCarosel from '../components/login/HomeCarosel';
 
 class LoginScreen extends Component{

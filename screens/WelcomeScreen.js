@@ -1,14 +1,8 @@
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View,Image,Button} from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import HomeCarosel from '../components/login/HomeCarosel';
 
 export default class WelcomeScreen extends Component {
   componentDidMount(){
@@ -47,19 +41,30 @@ signIn = async () => {
     }
   }
 };
+signOut = ()=>{
+  this.props.navigation.navigate('Register');
+}
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native !</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <GoogleSigninButton
+           <GoogleSigninButton
         title="LearnMore"
         style={{ width:312, height: 48 }}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Light}
         onPress={this.signIn} 
       />
+        <Image
+        style={{width: 60, height: 60}}
+        source={{uri: 'https://images.upwardly.in/logos/upwardly_emblem_green.png'}}
+        />
+    <HomeCarosel/>
+        <Button
+          onPress={()=>this.signOut()}
+          title="SignOut"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+          />
       </View>
     );
   }
@@ -68,18 +73,13 @@ signIn = async () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    padding:90
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
