@@ -22,11 +22,11 @@ signOut = ()=>{
           <GoogleLogin/>
             <Text style={{marginBottom:10,marginTop:10,textAlign: "center",}}>or use email address</Text>
           <View style={styles.authButton}>
-          <Button transparent>
+          <Button onPress={()=>this.props.navigation.navigate('Login')} transparent>
             <Text>LOG IN</Text>
           </Button>
           <Text> | </Text>
-          <Button  onPress={()=>this.signOut()} transparent>
+          <Button  onPress={()=>this.props.navigation.navigate('Register')} transparent>
             <Text>SIGN UP</Text>
           </Button>
           </View>
