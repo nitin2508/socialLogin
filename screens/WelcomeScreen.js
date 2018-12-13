@@ -20,12 +20,13 @@ signOut = ()=>{
         <HomeCarosel/>
         <View>
           <GoogleLogin/>
-          <View style={{'textAlign':'center'}}>
-            <Text>or use email address</Text>
+            <Text style={{marginBottom:10,marginTop:10,textAlign: "center",}}>or use email address</Text>
+          <View style={styles.authButton}>
           <Button transparent>
             <Text>LOG IN</Text>
           </Button>
-          <Button transparent>
+          <Text> | </Text>
+          <Button  onPress={()=>this.signOut()} transparent>
             <Text>SIGN UP</Text>
           </Button>
           </View>
@@ -47,5 +48,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+  authButton:{
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'center',
+    alignItems: 'center'
+  }
 
 });

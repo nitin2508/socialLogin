@@ -19,18 +19,27 @@ import WelcomeScreen from './screens/WelcomeScreen';
 
 const AuthStack = createStackNavigator({
   WelcomeScreen:{
-    screen:WelcomeScreen
+    screen:WelcomeScreen,
+    navigationOptions: () => ({
+      title:null,
+      headerBackTitle: null,
+      headerTransparent: true,  
+    }),
   },
   Login: {
-    screen: LoginScreen
+    screen: LoginScreen,
+    navigationOptions: () => ({
+      title:'Login',
+      headerTransparent: false,  
+    }),
   },
   Register:{
-    screen:RegisterScreen
+    screen:RegisterScreen,
+    navigationOptions: () => ({
+      title:'Register',
+      headerTransparent: false,  
+    }),
   }
-},
-{defaultNavigationOptions:{
-  headerTransparent: true,  
-}
 });
 
 const AppTabNavigator = createBottomTabNavigator({
