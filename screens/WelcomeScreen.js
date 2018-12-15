@@ -4,7 +4,6 @@ import {StyleSheet, View,Image} from 'react-native';
 import { Button,Text} from 'native-base'
 import HomeCarosel from '../components/login/HomeCarosel';
 import GoogleLogin from '../components/GoogleLogin';
-
 export default class WelcomeScreen extends Component {
 
 signOut = ()=>{
