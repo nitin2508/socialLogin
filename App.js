@@ -16,6 +16,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import SettingScreen from './screens/SettingScreen';
 import HomeScreen from './screens/HomeScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const AuthStack = createStackNavigator({
   WelcomeScreen:{
@@ -42,19 +43,45 @@ const AuthStack = createStackNavigator({
   }
 });
 
-const AppTabNavigator = createBottomTabNavigator({
-  HomeScreen: {
-    screen: HomeScreen,
-    navigationOptions: {
-      tabBarLabel: "HOME",
-    }
+const homeStack = createStackNavigator({
+  HomeScreen:{
+    screen:HomeScreen,
+    // navigationOptions: () => ({
+    //   title:null,
+    //   headerBackTitle: null,
+    //   headerTransparent: true,  
+    // }),
   },
+})
+
+const AppTabNavigator = createBottomTabNavigator({
+  HomeScreen: homeStack,
   Setting: {
     screen: SettingScreen,
-    navigationOptions: {
-      tabBarLabel: "SETTINGS",
-    }
-  }
+  },
+},{
+  defaultNavigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      const { routeName } = navigation.state;
+      let iconName;
+      if (routeName === 'HomeScreen') {
+        iconName = `md-home`;
+      } else if (routeName === 'Setting') {
+        iconName = `md-cog`;
+      }
+
+      // You can return any component that you like here! We usually use an
+      // icon component from react-native-vector-icons
+       return <Icon name={iconName} size={30} color={tintColor} />;
+      //return  <Icon size={30} name="md-trash"/>
+    },
+     tabBarOptions: {
+      inactiveTintColor: 'grey',
+      showLabel:false
+    },
+    tabBarLabel:'pskjdskd',
+    header: { visible: true }
+  })
 });
 
 
